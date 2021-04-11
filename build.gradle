@@ -28,6 +28,7 @@ plugins {
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
+
 group = "com.devsecops.bci"
 version = "0.0.1-SNAPSHOT"
 
