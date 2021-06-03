@@ -1,20 +1,15 @@
 pipeline {
     agent any
-
+    tools {nodejs "NodeJs"}
     stages {
-        stage('Build') {
+        stage('Build Front') {
             steps {
-                echo 'Building..'
+                sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Build Back') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh './gradlew build --scan'
             }
         }
     }
