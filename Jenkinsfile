@@ -1,17 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
-     environment {
-                    CI = 'true'
-                }
+    agent any
+    tools {nodejs "NodeJs"}
     stages {
-        stage('Build') {
+        stage('Build Front') {
             steps {
                 sh 'npm install'
+            }
+        }
+        stage('Build Back') {
+            steps {
+                sh './gradlew build --scan'
             }
         }
     }
