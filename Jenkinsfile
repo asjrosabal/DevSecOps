@@ -9,7 +9,13 @@ pipeline {
         }
         stage('Build Back') {
             steps {
-                sh './gradlew build --scan'
+                 sh './gradlew clean build --debug'
+            }
+        }
+        stage('SCA Scan') {
+            steps {
+                sh './gradlew dependencyCheckPurge'
+                sh './gradlew dependencyCheckAnalyze'
             }
         }
     }
